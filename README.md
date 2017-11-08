@@ -6,20 +6,33 @@ You will need to provide your own data in a new dictionary. I will give an examp
 1) add a new dictionary:nmt_data_chinese
 
 2) add following dataset and vocabulary under this dictionary.
+
 ---train dataset:
+
 1.train.en  
+
 2.train.zh
+
 ---dev dataset:
+
 3.dev.en
+
 4.dev.zh
+
 ---test dataset:
+
 5.test.en
+
 6.test.zh
+
 ---vocab:
+
 7.vocab.vi
+
 8.vocab.en
 
 3) use following command to train:
+
 python -m nmt.nmt \
     --attention=scaled_luong \
     --src=en --tgt=zh \
