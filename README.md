@@ -1,5 +1,43 @@
 # Neural Machine Translation (seq2seq) Tutorial
+Edit by:Bright Xu
+How to train neural machine translation by using your own dataset
+You will need to provide your own data in a new dictionary. I will give an example as transalte english to chinese.
 
+1) add a new dictionary:nmt_data_chinese
+
+2) add following dataset and vocabulary under this dictionary.
+---train dataset:
+1.train.en  
+2.train.zh
+---dev dataset:
+3.dev.en
+4.dev.zh
+---test dataset:
+5.test.en
+6.test.zh
+---vocab:
+7.vocab.vi
+8.vocab.en
+
+3) use following command to train:
+python -m nmt.nmt \
+    --attention=scaled_luong \
+    --src=en --tgt=zh \
+    --vocab_prefix=nmt_data_chinese/vocaebulary  \
+    --train_prefix=nmt_data_chinese/train \
+    --dev_prefix=nmt_data_chinese/dev  \
+    --test_prefix=nmt_data_chinese/test \
+    --out_dir=nmt_attention_model \
+    --num_train_steps=12000 \
+    --steps_per_stats=100 \
+    --num_layers=2 \
+    --num_units=128 \
+    --dropout=0.2 \
+    --metrics=bleu
+ 
+ Notice: for target side dataset, that is chinese corpus, it was tokenized before we run the above command.
+ 
+ ----------------------------------------------------------------------------------------------------------------------------------
 *Authors: Thang Luong, Eugene Brevdo, Rui Zhao ([Google Research Blogpost](https://research.googleblog.com/2017/07/building-your-own-neural-machine.html), [Github](https://github.com/tensorflow/nmt))*
 
 *This version of the tutorial requires [TensorFlow Nightly](https://github.com/tensorflow/tensorflow/#installation).
