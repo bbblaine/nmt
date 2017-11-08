@@ -1,5 +1,5 @@
 # Neural Machine Translation (seq2seq) Tutorial
-Edit by:Bright Xu
+Edit by: Bright Xu
 How to train neural machine translation by using your own dataset
 You will need to provide your own data in a new dictionary. I will give an example as transalte english to chinese.
 
