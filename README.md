@@ -1,8 +1,8 @@
+
 # Neural Machine Translation (seq2seq) Tutorial
 
 Edit by: Bright Xu
-
-How to train neural machine translation by using your own dataset
+1.How to train neural machine translation by using your own dataset
 
 You will need to provide your own data in a new dictionary. I will give an example as transalte english to chinese.
 
@@ -12,16 +12,18 @@ You will need to provide your own data in a new dictionary. I will give an examp
 
 ---train dataset:
 
+m
 1.train.en  
 
 2.train.zh
 
 ---dev dataset:
 
+
 3.dev.en
 
 4.dev.zh
-
+r
 ---test dataset:
 
 5.test.en
@@ -31,7 +33,7 @@ You will need to provide your own data in a new dictionary. I will give an examp
 ---vocab:
 
 7.vocab.vi
-
+https://github.com/rsennrich/subword-nmt
 8.vocab.en
 
 3) use following command to train:
@@ -50,6 +52,20 @@ python -m nmt.nmt \
     --num_units=128 \
     --dropout=0.2 \
     --metrics=bleu
+ 
+ 2. we use BPE sub word after tokenize of chinese to handle OOV or rare words.
+ 1) get subword:
+ 
+ ./learn_bpe.py -s 100000  <  ../nmt_data_chinese/train.zh > ../nmt_data_chinese/train.zh.subword
+ 
+ 2) apply bpe, to get processed training data.
+./apply_bpe.py -c   ../nmt_data_chinese/train.zh.subword  < ../nmt_data_chinese/train.zh >> train.zh.processed
+
+3) get vocabulary from our processed training data( it will include some vocabulary including '@@') 
+ ./get_vocab.py <  ../nmt_data_chinese/train.zh.processed  >  ../nmt_data_chinese/chinese_vocabulary
+
+BPE subword respository:
+ https://github.com/rsennrich/subword-nmt
  
  Notice: for target side dataset, that is chinese corpus, it was tokenized before we run the above command.
  
