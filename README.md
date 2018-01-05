@@ -13,18 +13,16 @@ You will need to provide your own data in a new dictionary. I will give an examp
 
 ---train dataset:
 
-m
 1.train.en  
 
 2.train.zh
 
 ---dev dataset:
 
-
 3.dev.en
 
 4.dev.zh
-r
+
 ---test dataset:
 
 5.test.en
@@ -34,7 +32,7 @@ r
 ---vocab:
 
 7.vocab.vi
-https://github.com/rsennrich/subword-nmt
+
 8.vocab.en
 
 3) use following command to train:
