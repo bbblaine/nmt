@@ -11,19 +11,19 @@ You will need to provide your own data in a new dictionary. I will give an examp
 
 2) add following dataset and vocabulary under this dictionary.
 
----train dataset:
+---dataset for train:
 
 1.train.en  
 
 2.train.zh
 
----dev dataset:
+---dataset for validation:
 
 3.dev.en
 
 4.dev.zh
 
----test dataset:
+---dataset for test:
 
 5.test.en
 
@@ -52,7 +52,7 @@ python -m nmt.nmt \
     --dropout=0.2 \
     --metrics=bleu
  
- 2. we use BPE sub word after tokenize of chinese to handle OOV or rare words.
+ 2.(optional)  we use BPE sub word after tokenize of chinese to handle OOV or rare words.
  1) get subword:
  
  ./learn_bpe.py -s 100000  <  ../nmt_data_chinese/train.zh > ../nmt_data_chinese/train.zh.subword
